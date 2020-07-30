@@ -10,8 +10,8 @@ if __name__ == '__main__':
     hf_names = glob.glob(os.path.join(ROOT, 'raw data/hf/*.csv'))
     lf_names = glob.glob(os.path.join(ROOT, 'raw data/lf/*.csv'))
 
-    hf_data = [np.asarray(pd.read_csv(hf_names[i], header=None)) for i in range(len(hf_names))]
-    lf_data = [np.asarray(pd.read_csv(lf_names[i], header=None)) for i in range(len(lf_names))]
+    hf_data = [np.asarray(pd.read_csv(hf_names[i], header=None), dtype='int8') for i in range(len(hf_names))]
+    lf_data = [np.asarray(pd.read_csv(lf_names[i], header=None), dtype='int8') for i in range(len(lf_names))]
 
     hf_data = np.stack(hf_data, axis=2)
     lf_data = np.stack(lf_data, axis=2)
@@ -26,8 +26,10 @@ if __name__ == '__main__':
 
     np.savez(os.path.join(ROOT, 'datas/datas.npz'), hf=hf_data, lf=lf_data)
 
-    # This is for check the data preprocessing result
-    # for i in range(270):
+    # This is for checking the data preprocessing result
+    # hf_data = np.transpose(hf_data, (0, 2, 3, 1))
+    # lf_data = np.transpose(lf_data, (0, 2, 3, 1))
+    # for i in range(70):
     #     hf_tmp = hf_data[i, ...]
     #     lf_tmp = lf_data[i, ...]
     #     plt.subplot(1,2,1),plt.imshow(hf_tmp),\
