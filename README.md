@@ -32,12 +32,12 @@ Example: ```./train --cuda```
 
 This will start a training session in the GPU. First it will pre-train the generator using MSE error for 2 epochs, then it will train the full GAN (generator + discriminator) for 100 epochs, using content (mse + vgg) and adversarial loss. Although weights are already provided in the repository, this script will also generate them in the checkpoints file.
 
-## Testing (Not Implemented)
+## Testing
 
 ```
-usage: test [-h] [--dataset DATASET] [--dataroot DATAROOT] [--workers WORKERS]
+usage: test [-h] [--dataset DATASET]
             [--batchSize BATCHSIZE] [--imageSize IMAGESIZE]
-            [--upSampling UPSAMPLING] [--cuda] [--nGPU NGPU]
+            [--upSampling UPSAMPLING] [--cuda]
             [--generatorWeights GENERATORWEIGHTS]
             [--discriminatorWeights DISCRIMINATORWEIGHTS]
 
